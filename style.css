@@ -76,6 +76,21 @@ dialog {
     border: 0px solid red;
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+
+#button-group{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid red;
+    width: 100%;
+}
+
+#button-group button{
+    width: 40%;
+    height: auto;
+    padding: 5px;
 }
 
 .book-header{

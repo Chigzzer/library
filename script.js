@@ -98,6 +98,7 @@ function displayBooks(){
         bookPagesValue.classList.add('book-value');
 
         let buttonGroup = libBook.appendChild(document.createElement('div'));
+        buttonGroup.setAttribute('id', 'button-group');
         let bookRead = buttonGroup.appendChild(document.createElement('Button'));
         bookRead.classList.add('bookRead');
         displayBookRead(libraryBook, bookRead);
@@ -114,7 +115,7 @@ function displayBooks(){
 
         let removeBook = buttonGroup.appendChild(document.createElement('button'));
         removeBook.classList.add('remove');
-        removeBook.innerText = "Delete Book";
+        removeBook.innerText = "Delete";
         removeBook.addEventListener("click", function(){removeBookFromLibrary(index)});
 
         bookTitleHeader.innerText = "Book Title:";
