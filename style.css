@@ -64,8 +64,11 @@ dialog {
     border: 0px solid red;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 500px;  
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    width: 200px;
+    padding: 20px;
 }
 
 .remove{
