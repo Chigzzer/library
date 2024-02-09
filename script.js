@@ -59,6 +59,7 @@ function displayBooks(){
         console.log(index);
         let libBook = librarySection.appendChild(document.createElement('div'));
         libBook.classList.add('book');
+        libBook.dataset.bookIndex = index;
         let bookTitle = libBook.appendChild(document.createElement('div'));
         libBook.classList.add('bookTitle');
         let bookAuthor = libBook.appendChild(document.createElement('div'));
