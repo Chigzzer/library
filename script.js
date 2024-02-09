@@ -72,28 +72,74 @@ function displayBooks(){
         let libBook = librarySection.appendChild(document.createElement('div'));
         libBook.classList.add('book');
         libBook.dataset.bookIndex = index;
+
         let bookTitle = libBook.appendChild(document.createElement('div'));
         bookTitle.classList.add('bookTitle');
+        bookTitle.classList.add('book-group');
+        let bookTitleHeader = bookTitle.appendChild(document.createElement('div'));    
+        let bookTitleValue = bookTitle.appendChild(document.createElement('div'));    
+        bookTitleHeader.classList.add('book-header');
+        bookTitleValue.classList.add('book-value');
+
         let bookAuthor = libBook.appendChild(document.createElement('div'));
         bookAuthor.classList.add('bookAuthor');
+        bookAuthor.classList.add('book-group');
+        let bookAuthorHeader = bookAuthor.appendChild(document.createElement('div'));    
+        let bookAuthorValue = bookAuthor.appendChild(document.createElement('div'));
+        bookAuthorHeader.classList.add('book-header');
+        bookAuthorValue.classList.add('book-value');
+
         let bookPages = libBook.appendChild(document.createElement('div'));
         bookPages.classList.add('bookPages');
-        let bookRead = libBook.appendChild(document.createElement('div'));
+        bookPages.classList.add('book-group');
+        let bookPagesHeader = bookPages.appendChild(document.createElement('div'));    
+        let bookPagesValue = bookPages.appendChild(document.createElement('div'));
+        bookPagesHeader.classList.add('book-header');
+        bookPagesValue.classList.add('book-value');
+
+        let buttonGroup = libBook.appendChild(document.createElement('div'));
+        let bookRead = buttonGroup.appendChild(document.createElement('Button'));
         bookRead.classList.add('bookRead');
-        let removeBook = libBook.appendChild(document.createElement('button'));
+        displayBookRead(libraryBook, bookRead);
+        
+        bookRead.addEventListener("click", function(){
+            if (libraryBook.read == true){
+                libraryBook.read = false;
+            }
+            else{
+                libraryBook.read=true;
+            }
+            displayBookRead(libraryBook, bookRead);
+        })
+
+        let removeBook = buttonGroup.appendChild(document.createElement('button'));
         removeBook.classList.add('remove');
         removeBook.innerText = "Delete Book";
         removeBook.addEventListener("click", function(){removeBookFromLibrary(index)});
 
-        bookTitle.innerText = "Book title: " + libraryBook.title;
-        bookAuthor.innerHTML = "Book author: " + libraryBook.author;
-        bookPages.innerHTML = "Number of pages: " + libraryBook.pages;
-        bookRead.innerHTML = "Read: " + libraryBook.read;
+        bookTitleHeader.innerText = "Book Title:";
+        bookTitleValue.innerText = libraryBook.title;
+        bookAuthorHeader.innerText = "Book Author:";
+        bookAuthorValue.innerText = libraryBook.author;
+        bookPagesHeader.innerText = "Book Pages:"; 
+        bookPagesValue.innerText = libraryBook.pages;
     }
     )
 }
 
-
+function displayBookRead(book, bookChangeButton){
+    console.log(book.read);
+    bookChangeButton.classList.toggle('book-read');
+    if (book.read == true){
+        bookChangeButton.innerText = "Read";
+        bookChangeButton.classList.add('book-read');
+        
+    }
+    else{
+        bookChangeButton.innerText = "Not read";
+        bookChangeButton.classList.remove('book-read');
+    }
+}
 
 
 // Test section to add books to library:

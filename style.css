@@ -68,9 +68,29 @@ dialog {
     align-items: center;
     gap: 25px;
     width: 200px;
+    height: 300px;
     padding: 20px;
 }
 
+.book-group{
+    border: 0px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-header{
+    border: 0px solid yellow;
+}
+
+.book-value{
+    border: 1px solid green;
+}
+
+.book-read{
+    background-color: green;
+}
+
+
 .remove{
-    height:20%;
+    height: auto;
 }
