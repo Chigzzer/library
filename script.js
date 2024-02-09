@@ -2,6 +2,7 @@ const myLibrary = [];
 
 const librarySection = document.getElementById('library');
 const dialog = document.querySelector("dialog");
+const form = document.querySelector("#newBookForm");
 const showButton = document.querySelector("dialog + button");
 const cancelButton = document.querySelector("#cancel");
 const addBookButton = document.querySelector("#addBookButton");
@@ -35,8 +36,16 @@ function Book(title, author, pages, read){
 
 function createBook(){
     event.preventDefault();
-    console.log(document.querySelector("#newBookTitle").value);
-    console.log('testing')
+    let newBookTitle = document.querySelector("#newBookTitle").value;
+    let newBookAuthor = document.querySelector("#newBookAuthor").value;
+    let newBookPages = document.querySelector("#newBookPages").value;
+    let newBookRead = document.querySelector("#newBookRead").checked;
+
+    let newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead);
+    addBookToLibrary(newBook);
+
+    form.reset();
+    dialog.close();
 }
 
 function addBookToLibrary(book){
