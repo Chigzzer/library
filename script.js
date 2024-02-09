@@ -12,7 +12,9 @@ showButton.addEventListener("click", () =>{
     dialog.showModal();
 });
 
-cancelButton.addEventListener("click", () => {
+cancelButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    form.reset();
     dialog.close();
 })
 
@@ -35,7 +37,7 @@ function Book(title, author, pages, read){
 }
 
 
-function createBook(){
+function createBook(event){
     event.preventDefault();
     let newBookTitle = document.querySelector("#newBookTitle").value;
     let newBookAuthor = document.querySelector("#newBookAuthor").value;
@@ -97,6 +99,6 @@ let book1 = new Book('Uno', 'Chiraag', 456, true);
 let book2 = new Book('Duo', 'Chiraag', 345, true);
 let book3 = new Book('Thres', 'Chiraag', 200, false);
 
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
+//addBookToLibrary(book1);
+//addBookToLibrary(book2);
+//addBookToLibrary(book3);
