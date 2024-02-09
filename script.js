@@ -7,6 +7,7 @@ const showButton = document.querySelector("dialog + button");
 const cancelButton = document.querySelector("#cancel");
 const addBookButton = document.querySelector("#addBookButton");
 
+
 showButton.addEventListener("click", () =>{
     dialog.showModal();
 });
@@ -53,21 +54,32 @@ function addBookToLibrary(book){
     displayBooks();
 }
 
+function removeBookFromLibrary(bookIndex){
+    console.log("");
+    myLibrary.splice(bookIndex, 1);
+    displayBooks();
+
+
+}
+
 function displayBooks(){
     librarySection.innerHTML = "";
     myLibrary.forEach((libraryBook, index) => {
-        console.log(index);
         let libBook = librarySection.appendChild(document.createElement('div'));
         libBook.classList.add('book');
         libBook.dataset.bookIndex = index;
         let bookTitle = libBook.appendChild(document.createElement('div'));
-        libBook.classList.add('bookTitle');
+        bookTitle.classList.add('bookTitle');
         let bookAuthor = libBook.appendChild(document.createElement('div'));
-        libBook.classList.add('bookAuthor');
+        bookAuthor.classList.add('bookAuthor');
         let bookPages = libBook.appendChild(document.createElement('div'));
-        libBook.classList.add('bookPages');
+        bookPages.classList.add('bookPages');
         let bookRead = libBook.appendChild(document.createElement('div'));
-        libBook.classList.add('bookRead');
+        bookRead.classList.add('bookRead');
+        let removeBook = libBook.appendChild(document.createElement('button'));
+        removeBook.classList.add('remove');
+        removeBook.innerText = "Delete Book";
+        removeBook.addEventListener("click", function(){removeBookFromLibrary(index)});
 
         bookTitle.innerHTML = libraryBook.title;
         bookAuthor.innerHTML = libraryBook.author;
