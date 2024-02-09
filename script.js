@@ -1,5 +1,6 @@
 const myLibrary = [];
 
+// Creating html handlers
 const librarySection = document.getElementById('library');
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("#newBookForm");
@@ -7,7 +8,7 @@ const showButton = document.querySelector("dialog + button");
 const cancelButton = document.querySelector("#cancel");
 const addBookButton = document.querySelector("#addBookButton");
 
-
+// Functions to open, submit and close the dialog box
 showButton.addEventListener("click", () =>{
     dialog.showModal();
 });
@@ -20,6 +21,7 @@ cancelButton.addEventListener("click", (event) => {
 
 addBookButton.addEventListener("click", createBook);
 
+// Initial construct of the Book object
 function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
@@ -36,7 +38,7 @@ function Book(title, author, pages, read){
     }
 }
 
-
+// Function to create a new book based on the user's input
 function createBook(event){
     event.preventDefault();
     let newBookTitle = document.querySelector("#newBookTitle").value;
@@ -46,24 +48,24 @@ function createBook(event){
 
     let newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead);
     addBookToLibrary(newBook);
-
     form.reset();
     dialog.close();
 }
 
+//Function that appends the new book into user's library
 function addBookToLibrary(book){
     myLibrary.push(book);
     displayBooks();
 }
 
+// Function that removes the book from the user's library and refreshes the page.
 function removeBookFromLibrary(bookIndex){
     console.log("");
     myLibrary.splice(bookIndex, 1);
     displayBooks();
-
-
 }
 
+//Function that looks at the user's library and displays the books onto the screen.
 function displayBooks(){
     librarySection.innerHTML = "";
     myLibrary.forEach((libraryBook, index) => {
