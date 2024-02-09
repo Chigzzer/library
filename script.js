@@ -55,27 +55,28 @@ function addBookToLibrary(book){
 
 function displayBooks(){
     librarySection.innerHTML = "";
-    myLibrary.forEach(displayBookOnPage);
+    myLibrary.forEach((libraryBook, index) => {
+        console.log(index);
+        let libBook = librarySection.appendChild(document.createElement('div'));
+        libBook.classList.add('book');
+        let bookTitle = libBook.appendChild(document.createElement('div'));
+        libBook.classList.add('bookTitle');
+        let bookAuthor = libBook.appendChild(document.createElement('div'));
+        libBook.classList.add('bookAuthor');
+        let bookPages = libBook.appendChild(document.createElement('div'));
+        libBook.classList.add('bookPages');
+        let bookRead = libBook.appendChild(document.createElement('div'));
+        libBook.classList.add('bookRead');
+
+        bookTitle.innerHTML = libraryBook.title;
+        bookAuthor.innerHTML = libraryBook.author;
+        bookPages.innerHTML = libraryBook.pages;
+        bookRead.innerHTML = libraryBook.read;
+    }
+    )
 }
 
-function displayBookOnPage(libraryBook){
-    let libBook = librarySection.appendChild(document.createElement('div'));
-    libBook.classList.add('book');
-    let bookTitle = libBook.appendChild(document.createElement('div'));
-    libBook.classList.add('bookTitle');
-    let bookAuthor = libBook.appendChild(document.createElement('div'));
-    libBook.classList.add('bookAuthor');
-    let bookPages = libBook.appendChild(document.createElement('div'));
-    libBook.classList.add('bookPages');
-    let bookRead = libBook.appendChild(document.createElement('div'));
-    libBook.classList.add('bookRead');
 
-    bookTitle.innerHTML = libraryBook.title;
-    bookAuthor.innerHTML = libraryBook.author;
-    bookPages.innerHTML = libraryBook.pages;
-    bookRead.innerHTML = libraryBook.read;
-
-}
 
 
 // Test section to add books to library:
