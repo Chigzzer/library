@@ -1,9 +1,20 @@
 const myLibrary = [];
 
 const librarySection = document.getElementById('library');
-let viewButton = document.getElementById('viewButton');
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector("dialog + button");
+const cancelButton = document.querySelector("#cancel");
+const addBookButton = document.querySelector("#addBookButton");
 
-viewButton.addEventListener("click", displayBooks);
+showButton.addEventListener("click", () =>{
+    dialog.showModal();
+});
+
+cancelButton.addEventListener("click", () => {
+    dialog.close();
+})
+
+addBookButton.addEventListener("click", createBook);
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -22,8 +33,15 @@ function Book(title, author, pages, read){
 }
 
 
+function createBook(){
+    event.preventDefault();
+    console.log(document.querySelector("#newBookTitle").value);
+    console.log('testing')
+}
+
 function addBookToLibrary(book){
     myLibrary.push(book);
+    displayBooks();
 }
 
 function displayBooks(){
@@ -35,9 +53,13 @@ function displayBookOnPage(libraryBook){
     let libBook = librarySection.appendChild(document.createElement('div'));
     libBook.classList.add('book');
     let bookTitle = libBook.appendChild(document.createElement('div'));
+    libBook.classList.add('bookTitle');
     let bookAuthor = libBook.appendChild(document.createElement('div'));
+    libBook.classList.add('bookAuthor');
     let bookPages = libBook.appendChild(document.createElement('div'));
+    libBook.classList.add('bookPages');
     let bookRead = libBook.appendChild(document.createElement('div'));
+    libBook.classList.add('bookRead');
 
     bookTitle.innerHTML = libraryBook.title;
     bookAuthor.innerHTML = libraryBook.author;

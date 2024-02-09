@@ -8,8 +8,22 @@
 </head>
 <body>
     <div id="app">
-        <button id="viewButton">View</button>
-
+        <dialog 9d="bookDialog">
+            <form action="">
+                <label for="author name">Author:</label>
+                <input id="newBookAuthor" name="author name" type="text">
+                <label for="book title">Book title:</label>
+                <input id="newBookTitle" name="book title" type="text">
+                <label for="number of pages">Number of pages:</label>
+                <input id="newBookPages" name="number of pages" type="number">
+                <label for="read">Have you read the book?</label>
+                <input id="newBookRead" type="checkbox" name="read" id="readCheckbox">
+                <button autofocus id="cancel">Cancel</button>
+                <button id="addBookButton">Add Book</button>
+            </form>
+        </dialog>
+        <button>Add Book</button>
+        
         <div id="library">
 
         </div>
