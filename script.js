@@ -4,7 +4,7 @@ const myLibrary = [];
 const librarySection = document.getElementById('library');
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("#newBookForm");
-const showButton = document.querySelector("dialog + button");
+const showButton = document.querySelector("#showDialog");
 const cancelButton = document.querySelector("#cancel");
 const addBookButton = document.querySelector("#addBookButton");
 
@@ -85,10 +85,10 @@ function displayBooks(){
         removeBook.innerText = "Delete Book";
         removeBook.addEventListener("click", function(){removeBookFromLibrary(index)});
 
-        bookTitle.innerHTML = libraryBook.title;
-        bookAuthor.innerHTML = libraryBook.author;
-        bookPages.innerHTML = libraryBook.pages;
-        bookRead.innerHTML = libraryBook.read;
+        bookTitle.innerText = "Book title: " + libraryBook.title;
+        bookAuthor.innerHTML = "Book author: " + libraryBook.author;
+        bookPages.innerHTML = "Number of pages: " + libraryBook.pages;
+        bookRead.innerHTML = "Read: " + libraryBook.read;
     }
     )
 }

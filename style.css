@@ -1,21 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+#app{
+    display: grid;
+    grid-template-rows: auto 2fr;
+    gap: 25px;
+    height: 100%;
+    width: 100%;
+}
+
+#header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: darkslategray;
+    padding: 10px;
+}
+
+dialog {
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    width: 25%;
+    padding: 20px;
+  }
+
+  #newBookForm{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+  }
+
+.form-group{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#library{
+    display: flex;
+    gap: 15%;
+    background-color: blue;
+    border: 0px solid red;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
 .book{
     background-color: black;
     color: white;
-    border: 1px solid red;
+    border: 0px solid red;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 500px;  
 }
 
-#library{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    gap: 15%;
-}
-
-
 .remove{
-    height: 50%;
+    height:20%;
 }

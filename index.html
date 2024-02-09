@@ -10,20 +10,32 @@
     <div id="app">
         <dialog id="bookDialog">
             <form id="newBookForm">
-                <label for="author name">Author:</label>
-                <input id="newBookAuthor" name="author name" type="text">
-                <label for="book title">Book title:</label>
-                <input id="newBookTitle" name="book title" type="text">
-                <label for="number of pages">Number of pages:</label>
-                <input id="newBookPages" name="number of pages" type="number">
-                <label for="read">Have you read the book?</label>
-                <input id="newBookRead" type="checkbox" name="read" id="readCheckbox">
-                <button autofocus id="cancel">Cancel</button>
-                <button id="addBookButton">Add Book</button>
+                <div class="form-group">
+                    <label for="author name">Author:</label>
+                    <input id="newBookAuthor" name="author name" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="book title">Book title:</label>
+                    <input id="newBookTitle" name="book title" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="number of pages">Number of pages:</label>
+                    <input id="newBookPages" name="number of pages" type="number">
+                </div>
+                <div class="form-group">    
+                    <label for="read">Have you read the book?</label>
+                    <input id="newBookRead" type="checkbox" name="read" id="readCheckbox">
+                </div>
+                <div class="form-group">
+                    <button autofocus id="cancel">Cancel</button>
+                    <button id="addBookButton">Add Book</button>
+                </div>
             </form>
         </dialog>
-        <button>Add Book</button>
-        
+        <div id="header">
+            <div>My Library</div>
+            <button id="showDialog">Add Book</button>
+        </div>       
         <div id="library">
 
         </div>
