@@ -12,15 +12,15 @@
             <form id="newBookForm">
                 <div class="form-group">
                     <label for="author name">Author:</label>
-                    <input id="newBookAuthor" name="author name" type="text">
+                    <input id="newBookAuthor" name="author name" type="text" required>
                 </div>
                 <div class="form-group">
                     <label for="book title">Book title:</label>
-                    <input id="newBookTitle" name="book title" type="text">
+                    <input id="newBookTitle" name="book title" type="text" required>
                 </div>
                 <div class="form-group">
                     <label for="number of pages">Number of pages:</label>
-                    <input id="newBookPages" name="number of pages" type="number">
+                    <input id="newBookPages" name="number of pages" type="number" min="0" required>
                 </div>
                 <div class="form-group">    
                     <label for="read">Have you read the book?</label>

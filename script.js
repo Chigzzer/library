@@ -45,6 +45,16 @@ function createBook(event){
     let newBookAuthor = document.querySelector("#newBookAuthor").value;
     let newBookPages = document.querySelector("#newBookPages").value;
     let newBookRead = document.querySelector("#newBookRead").checked;
+    console.log(newBookPages);
+    if ((newBookTitle == "") || (newBookAuthor == "")){
+        alert("Please make sure the book's title, author and number of pages is entered."); 
+        return;
+    }
+
+    if (typeof Number(newBookPages) != 'number' || newBookPages == "" || newBookPages < 0){
+        alert("Please make sure the number of pages is correct");
+        return;
+    }
 
     let newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead);
     addBookToLibrary(newBook);
