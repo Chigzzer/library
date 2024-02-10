@@ -2,21 +2,29 @@ const myLibrary = [];
 
 // Creating html handlers
 const librarySection = document.getElementById('library');
-const dialog = document.querySelector("dialog");
+const bookDialog = document.querySelector("#bookDialog");
 const form = document.querySelector("#newBookForm");
 const showButton = document.querySelector("#showDialog");
 const cancelButton = document.querySelector("#cancel");
 const addBookButton = document.querySelector("#addBookButton");
+const bookDetails = document.querySelector("#bookDetailPopUp");
+const popUpBox = document.querySelector("#bookDetailPopUp");
+const closePopupButton = document.querySelector("#close-popup");
+
+
+closePopupButton.addEventListener("click", () => {
+    bookDetails.classList.remove('show');
+    bookDetails.classList.add('hide');})
 
 // Functions to open, submit and close the dialog box
 showButton.addEventListener("click", () =>{
-    dialog.showModal();
+    bookDialog.showModal();
 });
 
 cancelButton.addEventListener("click", (event) => {
     event.preventDefault();
     form.reset();
-    dialog.close();
+    bookDialog.close();
 })
 
 addBookButton.addEventListener("click", createBook);
@@ -59,7 +67,7 @@ function createBook(event){
     let newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead);
     addBookToLibrary(newBook);
     form.reset();
-    dialog.close();
+    bookDialog.close();
 }
 
 //Function that appends the new book into user's library
@@ -75,8 +83,49 @@ function removeBookFromLibrary(bookIndex){
     displayBooks();
 }
 
-//Function that looks at the user's library and displays the books onto the screen.
+// Displaying each book with their title only
 function displayBooks(){
+    librarySection.innerHTML = "";
+    myLibrary.forEach((libraryBook, index) =>{
+        let libBook = librarySection.appendChild(document.createElement('div'));
+        libBook.classList.add('book');
+        libBook.dataset.bookIndex = index;
+        let bookTitle = libBook.appendChild(document.createElement('div'));
+        bookTitle.innerText = libraryBook.title;
+        libBook.addEventListener("click", function(){       
+        displayBookDetails(libraryBook)
+    });
+})}
+
+// Function to open the pop up with the book details.
+function displayBookDetails(libraryBook){
+    console.log(libraryBook);
+    let bookAuthor = libraryBook.author;
+    let bookTitle = libraryBook.title;
+    let bookPages = libraryBook.pages;
+    let bookRead = libraryBook.read;
+
+    let bookTitleValue = document.querySelector('#book-title-value');
+    let bookAuthorValue = document.querySelector('#book-author-value');
+    let bookPagesValue = document.querySelector('#book-pages-value');
+    let bookReadButton = document.querySelector('#book-read');
+
+
+    // Need to get this button to work; to get it to read or not
+    displayBookRead(libraryBook, bookReadButton);
+
+    bookTitleValue.innerText = bookTitle;
+    bookAuthorValue.innerText = bookAuthor;
+    bookPagesValue.innerText = bookPages;
+
+
+    bookDetails.classList.remove('hide');
+    bookDetails.classList.add('show');
+}
+
+
+//Function that looks at the user's library and displays the books onto the screen.
+function displayBooksExpand(){
     librarySection.innerHTML = "";
     myLibrary.forEach((libraryBook, index) => {
         let libBook = librarySection.appendChild(document.createElement('div'));

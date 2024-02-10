@@ -36,8 +36,29 @@
             <div>My Library</div>
             <button id="showDialog">Add Book</button>
         </div>       
-        <div id="library">
-
+        <div id="main-section">
+        <div id="library"></div>
+            <div id="bookDetailPopUp" class="hide">
+                <button id="close-popup">Close</button>
+                <div id="popUpContent" class="popUpContent">
+                    <div class="detail-group">
+                        <div id="book-author" class="detail-header">Book Author</div>
+                        <div id="book-author-value" class="detail-value"></div>
+                    </div>
+                    <div class="detail-group">
+                        <div id="book-title" class="detail-header">Book Title</div>
+                        <div id="book-title-value" class="detail-value"></div>
+                    </div>
+                    <div class="detail-group">
+                        <div id="book-page" class="detail-header">Number of Pages</div>
+                        <div id="book-pages-value" class="detail-value"></div>
+                    </div>
+                    <div id="button-group">
+                        <button id="book-read"></button>
+                        <button id="delete-book">Delete</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
