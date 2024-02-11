@@ -78,13 +78,8 @@ function addBookToLibrary(book){
 }
 
 // Function that removes the book from the user's library and refreshes the page.
-function removeBookFromLibrary(bookIndex){
-
-    console.log("removing index: " + bookIndex);
-    console.log(typeof bookIndex);
-
-    //myLibrary.splice(bookIndex, 0);
-    //console.log(myLibrary);
+function removeBookFromLibrary(){
+    myLibrary.splice(indexDelete, 1); 
     displayBooks();
 }
 
@@ -120,20 +115,6 @@ function displayBookDetails(libraryBook, index){
     let removeButton = document.querySelector('#delete-book');
 
 
-    // Removal has a bug. This gets called as many times as you have opened the box.
-    // Possibly the pop up has created multiple instances?
-    removeButton.addEventListener("click", (index) => {
-        console.log("----");
-        console.log(myLibrary);
-        console.log(indexDelete);
-        console.log("----");
-        
-        //myLibrary.splice(index, 1);
-        //displayBooks();
-    });
-
-
-
     displayBookRead(libraryBook, bookReadButton);
     bookReadButton.addEventListener("click", function(){
         if (libraryBook.read == true){
@@ -156,7 +137,9 @@ function displayBookDetails(libraryBook, index){
     bookDetails.classList.add('show');
 }
 
-
+function deleteTest(){
+    console.log(indexDelete);
+}
 
 
 function displayBookRead(book, bookChangeButton){
