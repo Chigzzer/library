@@ -162,7 +162,25 @@ function displayBookRead(book, bookChangeButton){
 let book1 = new Book('Uno', 'Chiraag', 456, true);
 let book2 = new Book('Duo', 'Chiraag', 345, true);
 let book3 = new Book('Thres', 'Chiraag', 200, false);
+let book4 = new Book('Thres', 'Chiraag', 200, false);
+let book5 = new Book('Thres', 'Chiraag', 200, false);
+let book6 = new Book('Thres', 'Chiraag', 200, false);
+let book7 = new Book('Thres', 'Chiraag', 200, false);
+let book8 = new Book('Thres', 'Chiraag', 200, false);
+let book9 = new Book('Thres', 'Chiraag', 200, false);
+let book10 = new Book('Thres', 'Chiraag', 200, false);
+let book11= new Book('Thres', 'Chiraag', 200, false);
+let book12= new Book('Thres', 'Chiraag', 200, false);
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
+addBookToLibrary(book4);
+addBookToLibrary(book5);
+addBookToLibrary(book6);
+addBookToLibrary(book7);
+addBookToLibrary(book8);
+addBookToLibrary(book9);
+addBookToLibrary(book10);
+addBookToLibrary(book11);
+addBookToLibrary(book12);
