@@ -127,6 +127,10 @@ dialog{
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+.book-detail-popup{
+    display: none;
+}
+
 .pop-up-content{
     background-color: white;
     margin: 10% auto;
@@ -140,6 +144,6 @@ dialog{
     display: block;
 }
 
-.hide{
+.hide2{
     display: none;
 }
