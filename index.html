@@ -8,39 +8,39 @@
 </head>
 <body>
     <div id="app">
-        <dialog id="bookDialog">
-            <form id="newBookForm">
+        <dialog id="book-dialog">
+            <form id="new-book-form">
                 <div class="form-group">
                     <label for="author name">Author:</label>
-                    <input id="newBookAuthor" name="author name" type="text" required>
+                    <input id="new-book-author" name="author name" type="text" required>
                 </div>
                 <div class="form-group">
                     <label for="book title">Book title:</label>
-                    <input id="newBookTitle" name="book title" type="text" required>
+                    <input id="new-book-title" name="book title" type="text" required>
                 </div>
                 <div class="form-group">
                     <label for="number of pages">Number of pages:</label>
-                    <input id="newBookPages" name="number of pages" type="number" min="0" required>
+                    <input id="new-book-pages" name="number of pages" type="number" min="0" required>
                 </div>
                 <div class="form-group">    
                     <label for="read">Have you read the book?</label>
-                    <input id="newBookRead" type="checkbox" name="read" id="readCheckbox">
+                    <input id="new-book-read" type="checkbox" name="read" id="read-checkbox">
                 </div>
                 <div class="form-group">
                     <button autofocus id="cancel">Cancel</button>
-                    <button id="addBookButton">Add Book</button>
+                    <button id="add-book-button">Add Book</button>
                 </div>
             </form>
         </dialog>
         <div id="header">
             <div>My Library</div>
-            <button id="showDialog">Add Book</button>
+            <button id="show-dialog">Add Book</button>
         </div>       
         <div id="main-section">
             <div id="library"></div>
-            <div id="bookDetailPopUp" class="hide">
+            <div id="book-detail-popup" class="hide">
                 <button id="close-popup">Close</button>
-                <div id="popUpContent" class="popUpContent">
+                <div id="pop-up-content" class="pop-up-content">
                     <div class="detail-group">
                         <div id="book-author" class="detail-header">Book Author</div>
                         <div id="book-author-value" class="detail-value"></div>

@@ -38,7 +38,7 @@ dialog{
     padding: 20px;
   }
 
-  #newBookForm{
+  #new-book-form{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -116,7 +116,7 @@ dialog{
     height: auto;
 }
 
-#bookDetailPopUp{
+#book-detail-popup{
     position: fixed;
     z-index: 1;
     left: 0;
@@ -127,7 +127,7 @@ dialog{
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.popUpContent{
+.pop-up-content{
     background-color: white;
     margin: 10% auto;
     padding: 20px;

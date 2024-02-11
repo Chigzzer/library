@@ -2,13 +2,13 @@ const myLibrary = [];
 
 // Creating html handlers
 const librarySection = document.getElementById('library');
-const bookDialog = document.querySelector("#bookDialog");
-const form = document.querySelector("#newBookForm");
-const showButton = document.querySelector("#showDialog");
+const bookDialog = document.querySelector("#book-dialog");
+const form = document.querySelector("#new-book-form");
+const showButton = document.querySelector("#show-dialog");
 const cancelButton = document.querySelector("#cancel");
-const addBookButton = document.querySelector("#addBookButton");
-const bookDetails = document.querySelector("#bookDetailPopUp");
-const popUpBox = document.querySelector("#bookDetailPopUp");
+const addBookButton = document.querySelector("#add-book-button");
+const bookDetails = document.querySelector("#book-detail-popup");
+const popUpBox = document.querySelector("#book-detail-popup");
 const closePopupButton = document.querySelector("#close-popup");
 
 let indexDelete;
@@ -50,10 +50,10 @@ function Book(title, author, pages, read){
 // Function to create a new book based on the user's input
 function createBook(event){
     event.preventDefault();
-    let newBookTitle = document.querySelector("#newBookTitle").value;
-    let newBookAuthor = document.querySelector("#newBookAuthor").value;
-    let newBookPages = document.querySelector("#newBookPages").value;
-    let newBookRead = document.querySelector("#newBookRead").checked;
+    let newBookTitle = document.querySelector("#new-book-title").value;
+    let newBookAuthor = document.querySelector("#new-book-author").value;
+    let newBookPages = document.querySelector("#new-book-pages").value;
+    let newBookRead = document.querySelector("#new-book-read").checked;
     console.log(newBookPages);
     if ((newBookTitle == "") || (newBookAuthor == "")){
         alert("Please make sure the book's title, author and number of pages is entered."); 
