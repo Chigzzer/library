@@ -120,9 +120,16 @@ function displayBookDetails(libraryBook, index){
     let removeButton = document.querySelector('#delete-book');
 
 
-    //Removal has a bug
+    // Removal has a bug. This gets called as many times as you have opened the box.
+    // Possibly the pop up has created multiple instances?
     removeButton.addEventListener("click", (index) => {
-
+        console.log("----");
+        console.log(myLibrary);
+        console.log(indexDelete);
+        console.log("----");
+        
+        //myLibrary.splice(index, 1);
+        //displayBooks();
     });
 
 
