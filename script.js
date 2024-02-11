@@ -11,6 +11,7 @@ const bookDetails = document.querySelector("#bookDetailPopUp");
 const popUpBox = document.querySelector("#bookDetailPopUp");
 const closePopupButton = document.querySelector("#close-popup");
 
+let indexDelete;
 
 closePopupButton.addEventListener("click", () => {
     bookDetails.classList.remove('show');
@@ -78,13 +79,19 @@ function addBookToLibrary(book){
 
 // Function that removes the book from the user's library and refreshes the page.
 function removeBookFromLibrary(bookIndex){
-    console.log("");
-    myLibrary.splice(bookIndex, 1);
+
+    console.log("removing index: " + bookIndex);
+    console.log(typeof bookIndex);
+
+    //myLibrary.splice(bookIndex, 0);
+    //console.log(myLibrary);
     displayBooks();
 }
 
 // Displaying each book with their title only
 function displayBooks(){
+    bookDetails.classList.remove('show');
+    bookDetails.classList.add('hide');
     librarySection.innerHTML = "";
     myLibrary.forEach((libraryBook, index) =>{
         let libBook = librarySection.appendChild(document.createElement('div'));
@@ -93,13 +100,14 @@ function displayBooks(){
         let bookTitle = libBook.appendChild(document.createElement('div'));
         bookTitle.innerText = libraryBook.title;
         libBook.addEventListener("click", function(){       
-        displayBookDetails(libraryBook)
+        displayBookDetails(libraryBook, index)
     });
 })}
 
 // Function to open the pop up with the book details.
-function displayBookDetails(libraryBook){
-    console.log(libraryBook);
+function displayBookDetails(libraryBook, index){
+    console.log("Index of book: " + index);
+    indexDelete = index;
     let bookAuthor = libraryBook.author;
     let bookTitle = libraryBook.title;
     let bookPages = libraryBook.pages;
@@ -109,10 +117,28 @@ function displayBookDetails(libraryBook){
     let bookAuthorValue = document.querySelector('#book-author-value');
     let bookPagesValue = document.querySelector('#book-pages-value');
     let bookReadButton = document.querySelector('#book-read');
+    let removeButton = document.querySelector('#delete-book');
 
 
-    // Need to get this button to work; to get it to read or not
+    //Removal has a bug
+    removeButton.addEventListener("click", (index) => {
+
+    });
+
+
+
     displayBookRead(libraryBook, bookReadButton);
+    bookReadButton.addEventListener("click", function(){
+        if (libraryBook.read == true){
+            libraryBook.read = false;
+        }
+        else{
+            libraryBook.read=true;
+        }
+        displayBookRead(libraryBook, bookReadButton);
+    })
+
+
 
     bookTitleValue.innerText = bookTitle;
     bookAuthorValue.innerText = bookAuthor;
@@ -124,70 +150,10 @@ function displayBookDetails(libraryBook){
 }
 
 
-//Function that looks at the user's library and displays the books onto the screen.
-function displayBooksExpand(){
-    librarySection.innerHTML = "";
-    myLibrary.forEach((libraryBook, index) => {
-        let libBook = librarySection.appendChild(document.createElement('div'));
-        libBook.classList.add('book');
-        libBook.dataset.bookIndex = index;
 
-        let bookTitle = libBook.appendChild(document.createElement('div'));
-        bookTitle.classList.add('bookTitle');
-        bookTitle.classList.add('book-group');
-        let bookTitleHeader = bookTitle.appendChild(document.createElement('div'));    
-        let bookTitleValue = bookTitle.appendChild(document.createElement('div'));    
-        bookTitleHeader.classList.add('book-header');
-        bookTitleValue.classList.add('book-value');
-
-        let bookAuthor = libBook.appendChild(document.createElement('div'));
-        bookAuthor.classList.add('bookAuthor');
-        bookAuthor.classList.add('book-group');
-        let bookAuthorHeader = bookAuthor.appendChild(document.createElement('div'));    
-        let bookAuthorValue = bookAuthor.appendChild(document.createElement('div'));
-        bookAuthorHeader.classList.add('book-header');
-        bookAuthorValue.classList.add('book-value');
-
-        let bookPages = libBook.appendChild(document.createElement('div'));
-        bookPages.classList.add('bookPages');
-        bookPages.classList.add('book-group');
-        let bookPagesHeader = bookPages.appendChild(document.createElement('div'));    
-        let bookPagesValue = bookPages.appendChild(document.createElement('div'));
-        bookPagesHeader.classList.add('book-header');
-        bookPagesValue.classList.add('book-value');
-
-        let buttonGroup = libBook.appendChild(document.createElement('div'));
-        buttonGroup.setAttribute('id', 'button-group');
-        let bookRead = buttonGroup.appendChild(document.createElement('Button'));
-        bookRead.classList.add('bookRead');
-        displayBookRead(libraryBook, bookRead);
-        
-        bookRead.addEventListener("click", function(){
-            if (libraryBook.read == true){
-                libraryBook.read = false;
-            }
-            else{
-                libraryBook.read=true;
-            }
-            displayBookRead(libraryBook, bookRead);
-        })
-
-        let removeBook = buttonGroup.appendChild(document.createElement('button'));
-        removeBook.classList.add('remove');
-        removeBook.innerText = "Delete";
-        removeBook.addEventListener("click", function(){removeBookFromLibrary(index)});
-
-        bookTitleHeader.innerText = "Book Title:";
-        bookTitleValue.innerText = libraryBook.title;
-        bookAuthorHeader.innerText = "Book Author:";
-        bookAuthorValue.innerText = libraryBook.author;
-        bookPagesHeader.innerText = "Book Pages:"; 
-        bookPagesValue.innerText = libraryBook.pages;
-    }
-    )
-}
 
 function displayBookRead(book, bookChangeButton){
+    console.log("TEST");
     console.log(book.read);
     bookChangeButton.classList.toggle('book-read');
     if (book.read == true){
@@ -207,6 +173,6 @@ let book1 = new Book('Uno', 'Chiraag', 456, true);
 let book2 = new Book('Duo', 'Chiraag', 345, true);
 let book3 = new Book('Thres', 'Chiraag', 200, false);
 
-//addBookToLibrary(book1);
-//addBookToLibrary(book2);
-//addBookToLibrary(book3);
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+addBookToLibrary(book3);
