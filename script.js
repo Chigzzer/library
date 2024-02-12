@@ -183,9 +183,6 @@ function getStarInfo(star){
 }
 
 function changeBookRating(rating){
-    //console.log(rating);
-    //console.log(book);
-    // Resetting rating
     currentOpenBook.rating = rating;
     clearRating();
     displayBookRating(rating);
