@@ -16,12 +16,6 @@ let indexDelete;
 let initialStarRating = 0;
 let currentOpenBook;
 
-closePopupButton.addEventListener("click", () => {
-    bookDetails.classList.remove('show');
-    bookDetails.classList.add('hide');
-    }
-)
-
 // Functions to open, submit and close the dialog box
 showButton.addEventListener("click", () =>{
     bookDialog.showModal();
@@ -30,7 +24,7 @@ showButton.addEventListener("click", () =>{
 cancelButton.addEventListener("click", (event) => {
     event.preventDefault();
     form.reset();
-    clearInitialRating();
+    clearRating();
     bookDialog.close();
 })
 
@@ -74,7 +68,7 @@ function createBook(event){
 
     let newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead, initialStarRating);
     addBookToLibrary(newBook);
-    clearInitialRating();
+    clearRating();
     form.reset();
     bookDialog.close();
 }
@@ -100,7 +94,7 @@ function displayBooks(){
     });
 }
 
-
+// Functions to populate the book details for each book
 function createBookDetail(libraryBook, index){
     let libBook = librarySection.appendChild(document.createElement('div'));
     let bookTitle = libBook.appendChild(document.createElement('div'));
@@ -113,7 +107,6 @@ function createBookDetail(libraryBook, index){
 }
 // Function to open the pop up with the book details.
 function displayBookDetails(libraryBook, index){
-    // console.log("Index of book: " + index);
     indexDelete = index;
     currentOpenBook = libraryBook;
     let bookAuthor = libraryBook.author;
@@ -138,6 +131,18 @@ function displayBookDetails(libraryBook, index){
     displayBookRating(bookRatingDetail);
     bookDetailsToggle();
 }
+
+// Functions to close the details section
+document.addEventListener("keydown", ({key}) => {
+    if (key == "Escape"){
+        bookDetails.classList.remove('show');
+    }
+} )
+
+closePopupButton.addEventListener("click", () => {
+    bookDetailsToggle();
+    }
+)
 
 function bookDetailsToggle(){
     bookDetails.classList.toggle('show');
@@ -164,7 +169,7 @@ function displayBookRead(book, bookChangeButton){
     }
 }
 
-// Rating change functions
+// COde for the rating system.
 stars.forEach((star) =>{
     console.log(star);
     star.addEventListener("click", function(){
@@ -190,15 +195,19 @@ function clearRating(){
     for (let i=1; i < 6; ++i){
         //console.log(i);
         let starChange = document.getElementById(`${i}-star-img`);
+        let starChangeInitial = document.getElementById(`${i}-star-initial-img`);
         starChange.src="images/star-outline.svg";
+        starChangeInitial.src="images/star-outline.svg";
     }
 }
 
 function displayBookRating(ratingValue){
-    if (ratingValue == '0'){
+    if (Number(ratingValue) <= 0 || isNaN(ratingValue)){
     clearRating();
     return;
     }
+    if (Number(ratingValue) > 5){ratingValue = 5}; 
+    
     for (let j=1; j < Number(ratingValue)+1; ++j){
         //console.log(j);
         let starChange = document.getElementById(`${j}-star-img`);
@@ -214,24 +223,15 @@ initialStars.forEach((star)=> {
 
 function setInitialRating(star){
     let initialRating = star.dataset.rating;
-    console.log("TESTT");
-    console.log(initialRating);
-    clearInitialRating();
+    if (Number(initialRating) > 5){initialRating = 5}; 
+    clearRating();
     displayInitialRating(initialRating);
     initialStarRating = Number(initialRating);
 }
 
-function clearInitialRating(){
-    for (let i=1; i < 6; ++i){
-        //console.log(i);
-        let starChange = document.getElementById(`${i}-star-initial-img`);
-        starChange.src="images/star-outline.svg";
-    }
-}
-
 function displayInitialRating(ratingValue){
     if (ratingValue == '0'){
-    clearInitialRating();
+    clearRating();
     return;
     }
     for (let j=1; j < Number(ratingValue)+1; ++j){
@@ -253,7 +253,7 @@ let book8 = new Book('Thres', 'Chiraag', 200, false, 0);
 let book9 = new Book('Thres', 'Chiraag', 200, false, 0);
 let book10 = new Book('Thres', 'Chiraag', 200, false, 0);
 let book11= new Book('Thres', 'Chiraag', 200, false, 0);
-let book12= new Book('Thres', 'Chiraag', 200, false, 0);
+let book12= new Book('Seven', 'Chiraag', 200, false, 7);
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
