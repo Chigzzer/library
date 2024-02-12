@@ -239,6 +239,7 @@ function displayInitialRating(ratingValue){
 }
 
 // Test section to add books to library:
+/*
 let book1 = new Book('Uno', 'Chiraag', 456, true, 1);
 let book2 = new Book('Duo', 'Chiraag', 345, false, 2);
 let book3 = new Book('Thres', 'Chiraag', 200, false, 3);
@@ -263,4 +264,8 @@ addBookToLibrary(book8);
 addBookToLibrary(book9);
 addBookToLibrary(book10);
 addBookToLibrary(book11);
-addBookToLibrary(book12);
+addBookToLibrary(book12); */
+
+for (let k = 0; k < 25; ++k){
+    addBookToLibrary(new Book('one', 'chiraag chandarana', ' 555', false, 5));
+}
