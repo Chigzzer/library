@@ -10,8 +10,37 @@ const addBookButton = document.querySelector("#add-book-button");
 const bookDetails = document.querySelector("#book-detail-popup");
 const popUpBox = document.querySelector("#book-detail-popup");
 const closePopupButton = document.querySelector("#close-popup");
-
+const stars = document.querySelectorAll(".star");
 let indexDelete;
+
+stars.forEach((star) =>{
+    console.log(star.dataset.rating);
+    star.addEventListener("click", function(){
+        getStarInfo(star);
+    });
+})
+
+function getStarInfo(star){
+    let bookRating = star.dataset.rating;
+    changeBookRating(bookRating);
+}
+
+function changeBookRating(rating){
+    console.log(rating);
+
+    for (let i=1; i < 6; ++i){
+        console.log(i);
+        let starChange = document.getElementById(`${i}-star-img`);
+        starChange.src="images/star-outline.svg";
+    }
+
+    for (let j=1; j < Number(rating)+1; ++j){
+        console.log(j);
+        let starChange = document.getElementById(`${j}-star-img`);
+        starChange.src="images/star.svg";
+    }
+
+}
 
 closePopupButton.addEventListener("click", () => {
     bookDetails.classList.remove('show');

@@ -148,3 +148,9 @@ dialog{
 .show {
     display: block;
 }
+
+
+#ratings{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
