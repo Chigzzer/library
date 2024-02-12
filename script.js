@@ -11,40 +11,16 @@ const bookDetails = document.querySelector("#book-detail-popup");
 const popUpBox = document.querySelector("#book-detail-popup");
 const closePopupButton = document.querySelector("#close-popup");
 const stars = document.querySelectorAll(".star");
+const initialStars = document.querySelectorAll(".initial-star");
 let indexDelete;
-
-stars.forEach((star) =>{
-    console.log(star.dataset.rating);
-    star.addEventListener("click", function(){
-        getStarInfo(star);
-    });
-})
-
-function getStarInfo(star){
-    let bookRating = star.dataset.rating;
-    changeBookRating(bookRating);
-}
-
-function changeBookRating(rating){
-    console.log(rating);
-
-    for (let i=1; i < 6; ++i){
-        console.log(i);
-        let starChange = document.getElementById(`${i}-star-img`);
-        starChange.src="images/star-outline.svg";
-    }
-
-    for (let j=1; j < Number(rating)+1; ++j){
-        console.log(j);
-        let starChange = document.getElementById(`${j}-star-img`);
-        starChange.src="images/star.svg";
-    }
-
-}
+let initialStarRating = 0;
+let currentOpenBook;
 
 closePopupButton.addEventListener("click", () => {
     bookDetails.classList.remove('show');
-    bookDetails.classList.add('hide');})
+    bookDetails.classList.add('hide');
+    }
+)
 
 // Functions to open, submit and close the dialog box
 showButton.addEventListener("click", () =>{
@@ -54,17 +30,19 @@ showButton.addEventListener("click", () =>{
 cancelButton.addEventListener("click", (event) => {
     event.preventDefault();
     form.reset();
+    clearInitialRating();
     bookDialog.close();
 })
 
 addBookButton.addEventListener("click", createBook);
 
 // Initial construct of the Book object
-function Book(title, author, pages, read){
+function Book(title, author, pages, read, rating){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.rating = rating;
     this.info = function(){
         if (this.read == true){
             readStatement = "has been read."
@@ -94,8 +72,9 @@ function createBook(event){
         return;
     }
 
-    let newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead);
+    let newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead, initialStarRating);
     addBookToLibrary(newBook);
+    clearInitialRating();
     form.reset();
     bookDialog.close();
 }
@@ -114,7 +93,7 @@ function removeBookFromLibrary(){
 
 // Displaying each book with their title only
 function displayBooks(){
-    bookDetailsToggle();
+    // bookDetailsToggle();
     librarySection.innerHTML = "";
     myLibrary.forEach((libraryBook, index) =>{
         createBookDetail(libraryBook, index);       
@@ -136,9 +115,11 @@ function createBookDetail(libraryBook, index){
 function displayBookDetails(libraryBook, index){
     // console.log("Index of book: " + index);
     indexDelete = index;
+    currentOpenBook = libraryBook;
     let bookAuthor = libraryBook.author;
     let bookTitle = libraryBook.title;
     let bookPages = libraryBook.pages;
+    let bookRatingDetail = libraryBook.rating;
     let bookTitleValue = document.querySelector('#book-title-value');
     let bookAuthorValue = document.querySelector('#book-author-value');
     let bookPagesValue = document.querySelector('#book-pages-value');
@@ -153,7 +134,8 @@ function displayBookDetails(libraryBook, index){
     bookTitleValue.innerText = bookTitle;
     bookAuthorValue.innerText = bookAuthor;
     bookPagesValue.innerText = bookPages;
-
+    clearRating();
+    displayBookRating(bookRatingDetail);
     bookDetailsToggle();
 }
 
@@ -182,20 +164,96 @@ function displayBookRead(book, bookChangeButton){
     }
 }
 
+// Rating change functions
+stars.forEach((star) =>{
+    console.log(star);
+    star.addEventListener("click", function(){
+        getStarInfo(star);
+    });
+})
+
+function getStarInfo(star){
+    let bookRating = star.dataset.rating;
+    changeBookRating(bookRating);
+}
+
+function changeBookRating(rating){
+    //console.log(rating);
+    //console.log(book);
+    // Resetting rating
+    currentOpenBook.rating = rating;
+    clearRating();
+    displayBookRating(rating);
+} 
+
+function clearRating(){
+    for (let i=1; i < 6; ++i){
+        //console.log(i);
+        let starChange = document.getElementById(`${i}-star-img`);
+        starChange.src="images/star-outline.svg";
+    }
+}
+
+function displayBookRating(ratingValue){
+    if (ratingValue == '0'){
+    clearRating();
+    return;
+    }
+    for (let j=1; j < Number(ratingValue)+1; ++j){
+        //console.log(j);
+        let starChange = document.getElementById(`${j}-star-img`);
+        starChange.src="images/star.svg";
+    }
+}
+
+initialStars.forEach((star)=> {
+    star.addEventListener("click", function(){
+        setInitialRating(star);
+    })
+})
+
+function setInitialRating(star){
+    let initialRating = star.dataset.rating;
+    console.log("TESTT");
+    console.log(initialRating);
+    clearInitialRating();
+    displayInitialRating(initialRating);
+    initialStarRating = Number(initialRating);
+}
+
+function clearInitialRating(){
+    for (let i=1; i < 6; ++i){
+        //console.log(i);
+        let starChange = document.getElementById(`${i}-star-initial-img`);
+        starChange.src="images/star-outline.svg";
+    }
+}
+
+function displayInitialRating(ratingValue){
+    if (ratingValue == '0'){
+    clearInitialRating();
+    return;
+    }
+    for (let j=1; j < Number(ratingValue)+1; ++j){
+        //console.log(j);
+        let starChange = document.getElementById(`${j}-star-initial-img`);
+        starChange.src="images/star.svg";
+    }
+}
 
 // Test section to add books to library:
-let book1 = new Book('Uno', 'Chiraag', 456, true);
-let book2 = new Book('Duo', 'Chiraag', 345, false);
-let book3 = new Book('Thres', 'Chiraag', 200, false);
-let book4 = new Book('Thres', 'Chiraag', 200, false);
-let book5 = new Book('Thres', 'Chiraag', 200, false);
-let book6 = new Book('Thres', 'Chiraag', 200, false);
-let book7 = new Book('Thres', 'Chiraag', 200, false);
-let book8 = new Book('Thres', 'Chiraag', 200, false);
-let book9 = new Book('Thres', 'Chiraag', 200, false);
-let book10 = new Book('Thres', 'Chiraag', 200, false);
-let book11= new Book('Thres', 'Chiraag', 200, false);
-let book12= new Book('Thres', 'Chiraag', 200, false);
+let book1 = new Book('Uno', 'Chiraag', 456, true, 1);
+let book2 = new Book('Duo', 'Chiraag', 345, false, 2);
+let book3 = new Book('Thres', 'Chiraag', 200, false, 3);
+let book4 = new Book('four', 'Chiraag', 200, false, 4);
+let book5 = new Book('five', 'Chiraag', 200, false, 5);
+let book6 = new Book('Thres', 'Chiraag', 200, false, 0);
+let book7 = new Book('Thres', 'Chiraag', 200, false, 0);
+let book8 = new Book('Thres', 'Chiraag', 200, false, 0);
+let book9 = new Book('Thres', 'Chiraag', 200, false, 0);
+let book10 = new Book('Thres', 'Chiraag', 200, false, 0);
+let book11= new Book('Thres', 'Chiraag', 200, false, 0);
+let book12= new Book('Thres', 'Chiraag', 200, false, 0);
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);

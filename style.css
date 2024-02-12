@@ -154,3 +154,11 @@ dialog{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
+
+#book-initial-rating{
+    display: flex;
+}
+
+#book-initial-rating img{
+    width: 35px;
+}
