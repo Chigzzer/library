@@ -10,7 +10,7 @@ body{
 
 #app{
     display: grid;
-    grid-template-rows: auto 2fr;
+    grid-template-rows: auto 2fr auto;
     gap: 25px;
     height: 100vh;
     width: 100vw;
@@ -25,14 +25,18 @@ body{
 }
 
 #header button{
-    padding:20px;
-    border-radius: 25px;
+    padding: 10px;
+    border-radius: 100px;
     width: auto;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 #site-title{
-    font-size: 100px;
+    font-size: 50px;
+    color: aliceblue;
+    border: 0px solid red;
+    -webkit-text-stroke: 1px red;
+    -webkit-text-fill-color: azure;
 }
 
 dialog{
@@ -69,12 +73,11 @@ dialog{
 
 #library{
     display: flex;
-    gap: 0px;
-    row-gap: 100px;
-    background-color: blue;
+    gap: 10px;
+    background-color: azure;
     border: 0px solid green;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     height: 100%;
     width: 100%;
@@ -84,18 +87,17 @@ dialog{
 
 .book{
     display: flex;
-    flex: 1 1 auto;
+    flex: 0 1 150px;
     justify-content: center;
     align-items: center;
-    width: 150px;
-    max-height: 300px;
-    min-height: 100px;
+    width: min-content;
+    height: 150px;
     padding: 20px;
     text-align: center;
     text-transform: uppercase;
     background-color: black;
     color: yellow;
-    border: 1px solid red;
+    border: 0px solid red;
 }
 
 
@@ -103,7 +105,7 @@ dialog{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid red;
+    border: 0px solid red;
     width: 100%;
 }
 
@@ -169,4 +171,11 @@ dialog{
 
 #book-initial-rating img{
     width: 35px;
+}
+
+#footer{
+    background-color: darkslategray;
+    text-align: end;
+    padding-right: 25px;
+    color: aliceblue;
 }

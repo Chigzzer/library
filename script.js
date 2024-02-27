@@ -82,6 +82,7 @@ function addBookToLibrary(book){
 // Function that removes the book from the user's library and refreshes the page.
 function removeBookFromLibrary(){
     myLibrary.splice(indexDelete, 1); 
+    bookDetailsToggle();
     displayBooks();
 }
 
@@ -204,8 +205,9 @@ function displayBookRating(ratingValue){
     clearRating();
     return;
     }
-    if (Number(ratingValue) > 5){ratingValue = 5}; 
-    
+    if (Number(ratingValue) > 5){
+        ratingValue = 5;
+    } 
     for (let j=1; j < Number(ratingValue)+1; ++j){
         //console.log(j);
         let starChange = document.getElementById(`${j}-star-img`);
@@ -239,6 +241,6 @@ function displayInitialRating(ratingValue){
     }
 }
 
-for (let k = 0; k < 25; ++k){
-    addBookToLibrary(new Book(k, 'chiraag chandarana', ' 555', false, (Math.floor(Math.random()*6))));
+for (let k = 0; k < 21; ++k){
+    addBookToLibrary(new Book(k, 'Tom Davies', '555', false, (Math.floor(Math.random()*6))));
 }
