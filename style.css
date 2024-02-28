@@ -188,10 +188,12 @@ dialog{
 }
 
 #close-popup{
-    border: 0px solid red;
+    border: 1px solid black;
     position: relative;
     left: 63%;
     top: 28%;
+    border-radius: 25px;
+    padding: 5px;
 }
 
 .detail-group{
